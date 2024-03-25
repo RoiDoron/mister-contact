@@ -15,7 +15,7 @@ export function App() {
             <Router>
                 <div>
                     <AppHeader />
-                    <main>
+                    <main className='main-layout'>
                         <Routes>
                             <Route element={<ContactDetails />} path="/contact/:contactID" />
                         </Routes>
