@@ -19,7 +19,8 @@ export function ContactFilter({ filterBy, onSetFilter }) {
     }
 
     return (
-        <form >
+        <form>
+            <label className="search-focus" htmlFor="title"><span className="fa-solid fa-magnifying-glass"></span></label>
             <input type="text"
                 id="title"
                 name="txt"

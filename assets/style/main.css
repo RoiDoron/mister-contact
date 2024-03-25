@@ -10,8 +10,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin: .5em 0 .5em;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
+    margin: .5em 0 .5em;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 
@@ -29,7 +29,6 @@ footer {
 
 nav a {
     display: inline-block;
-    margin: 3px;
     padding: 10px;
     border-bottom: 1px solid transparent;
     text-decoration: none;
@@ -92,6 +91,7 @@ nav a:hover {
     text-align: center;
     padding: 5px;
     max-width: 9em;
+    cursor: -webkit-grabbing;
 }
 
 .bug-preview:hover {
@@ -107,7 +107,7 @@ nav a:hover {
     color: gold;
 }
 
-.bug-preview .x-btn{
+.bug-preview .x-btn {
     position: absolute;
     right: 5px;
     background-color: rgba(240, 255, 255, 0);
@@ -115,7 +115,7 @@ nav a:hover {
     border: none;
 }
 
-.bug-preview button:hover{
+.bug-preview button:hover {
     cursor: pointer;
 }
 
@@ -123,6 +123,7 @@ nav a:hover {
     display: block;
     margin-bottom: 5px;
 }
+
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -130,13 +131,14 @@ nav a:hover {
 
 .nav-bar {
     line-height: 3.5em;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 .main-layout {
     text-align: center;
 }
 
-.add-btn{
+.add-btn {
     padding: 9px;
     border-radius: 1em;
     border: none;
@@ -144,20 +146,29 @@ nav a:hover {
     margin-bottom: 1em;
 }
 
-.search-input{
-    display: block;
+.search-input {
+    display: inline;
     margin: auto;
     padding: 10px;
     border-radius: 3em;
     border: none;
-    background-color:  lightskyblue;
-  
+    background-color: lightskyblue;
 }
 
-.search-input:focus{
-   outline: none;
+.search-input:focus {
+    outline: none;
 }
 
-.search-input::placeholder{
+.search-input::placeholder {
     color: black;
+}
+
+.search-focus {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 0.5em;
+}
+
+button{
+    cursor: pointer;
 }
