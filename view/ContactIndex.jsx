@@ -1,6 +1,6 @@
 import { ContactList } from "../cmp/ContactList.jsx"
 import { contactService } from "../services/contact.service.js"
-import { loadContacts } from "../store/actions/contact.actions.js"
+import { loadContacts, saveContact } from "../store/actions/contact.actions.js"
 
 const { useState, useEffect } = React
 const { useSelector } = ReactRedux
@@ -15,6 +15,22 @@ export function ContactIndex() {
                 showErrorMsg('Cannot load Contacts!')
             })
     }, [])
+
+    function onAddContact() {
+        const contact = {
+            title: prompt('Contact title?'),
+            number: +prompt('Contact number?'),
+        }
+        saveContact(contact)
+            .then((savedContact) => {
+                console.log('success')
+                // showSuccessMsg('Todo added')
+            })
+            .catch((err) => {
+                console.log('fail')
+                // showErrorMsg('Cannot add todo')
+            })
+    }
 
 
     return (
