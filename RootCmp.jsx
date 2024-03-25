@@ -5,18 +5,21 @@ const { Provider } = ReactRedux
 
 import { AppFooter } from './cmp/AppFooter.jsx'
 import { AppHeader } from './cmp/AppHeader.jsx'
+import { ContactDetails } from './view/ContactDetails.jsx'
 
 
 export function App() {
     return (
-        // <Provider>
-            // <Router>
+        <Provider>
+            <Router>
                 <div>
                     <AppHeader />
                     <main>
-                    
+                        <Routes>
+                            <Route element={<ContactDetails />} path="/contact/:contactID" />
+                        </Routes>
                     </main>
-                    {/* <AppFooter /> */}
+                    <AppFooter />
                 </div>
             // </Router>
         // </Provider>
