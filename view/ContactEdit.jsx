@@ -7,7 +7,7 @@ import { contactService } from "../services/contact.service.js"
 export function ContactEdit() {
     const { contactId } = useParams()
     
-    const [editContact, setEditContact] = useState(null)
+    const [editContact, setEditContact] = useState(contactService.getEmptyContact())
 
     useEffect(() => {
         contactService.getById(contactId)
@@ -23,11 +23,12 @@ export function ContactEdit() {
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
-        setEditContact({ ...prevContact, [field]: value })
+        setEditContact(prevEditContact=>({ ...prevEditContact, [field]: value }))
     }
 
     function submit(ev) {
         ev.preventDefault()
+        console.log('hi');
         contactService.save(editContact)
     }
 
@@ -48,6 +49,7 @@ export function ContactEdit() {
             onChange={handleChange}
             placeholder="Contact number"
         />
+        <button>submit</button>
     </form>
 
 }

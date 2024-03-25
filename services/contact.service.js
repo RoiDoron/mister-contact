@@ -10,6 +10,14 @@ export const contactService = {
     getById,
     save,
     remove,
+    getEmptyContact
+}
+
+function getEmptyContact() {
+    return {
+        title: "",
+        number: ""
+    }
 }
 
 function query() {
