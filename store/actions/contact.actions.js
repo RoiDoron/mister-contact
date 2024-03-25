@@ -14,3 +14,16 @@ export function loadContacts() {
             throw err
         })
 }
+
+export function saveContact(contact) {
+    const type = contact._id ? UPDATE_CONTACT : ADD_CONTACT
+    return contactService.save(contact)
+        .then((savedContact) => {
+            store.dispatch({ type, contact: savedContact })
+            return savedContact
+        })
+        .catch(err => {
+            console.log('contact action -> Cannot save contact', err)
+            throw err
+        })
+}
