@@ -16,21 +16,21 @@ export function ContactIndex() {
             })
     }, [])
 
-    function onAddContact() {
-        const contact = {
-            title: prompt('Contact title?'),
-            number: +prompt('Contact number?'),
-        }
-        saveContact(contact)
-            .then((savedContact) => {
-                console.log('success')
-                // showSuccessMsg('Todo added')
-            })
-            .catch((err) => {
-                console.log('fail')
-                // showErrorMsg('Cannot add todo')
-            })
-    }
+    // function onAddContact() {
+    //     const contact = {
+    //         title: prompt('Contact title?'),
+    //         number: +prompt('Contact number?'),
+    //     }
+    //     saveContact(contact)
+    //         .then((savedContact) => {
+    //             console.log('success')
+    //             // showSuccessMsg('Todo added')
+    //         })
+    //         .catch((err) => {
+    //             console.log('fail')
+    //             // showErrorMsg('Cannot add todo')
+    //         })
+    // }
 
 
     return (
