@@ -14,7 +14,7 @@ export function ContactList({contacts}){
                     <ContactPreview contact={contact} />
                     <div>
                         {/* <button onClick={() => onRemoveTodo(todo._id)}>x</button> */}
-                        {/* <Link to={`/contact/${contact._id}`}><button onClick={() => onEditContact(contact)}>Edit contact</button></Link> */}
+                        <Link to={`/contact/edit/${contact._id}`}><button onClick={() => onEditContact(contact)}>Edit contact</button></Link>
                     </div>
                     <Link to={`/contact/${contact._id}`}>Details</Link>
                 </li>
