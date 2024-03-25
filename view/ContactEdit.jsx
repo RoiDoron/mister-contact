@@ -3,6 +3,7 @@ const { useState, useEffect } = React
 const { Link, useParams } = ReactRouterDOM
 
 import { contactService } from "../services/contact.service.js"
+import { saveContact } from "../store/actions/contact.actions.js"
 
 export function ContactEdit() {
     const { contactId } = useParams()
@@ -29,7 +30,7 @@ export function ContactEdit() {
     function submit(ev) {
         ev.preventDefault()
         console.log('hi');
-        contactService.save(editContact)
+        saveContact(editContact)
     }
 
     return <form onSubmit={submit}>
