@@ -1,9 +1,23 @@
 const { useState, useEffect } = React
 
+const { Link, useParams } = ReactRouterDOM
+
 import { contactService } from "../services/contact.service.js"
 
-export function ContactEdit({ contact }) {
-    const [editContact, setEditContact] = useState(contact)
+export function ContactEdit() {
+    const { contactId } = useParams()
+    
+    const [editContact, setEditContact] = useState(null)
+
+    useEffect(() => {
+        contactService.getById(contactId)
+            .then(contact => {
+                setEditContact(contact)
+            })
+            .catch(err => {
+                // showErrorMsg('Cannot load contact')
+            })
+    }, [])
 
 
     function handleChange({ target }) {
