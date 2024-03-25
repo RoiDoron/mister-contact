@@ -1,8 +1,10 @@
+import { ContactFilter } from "../cmp/ContactFilter.jsx"
 import { ContactList } from "../cmp/ContactList.jsx"
 import { Navigate } from "../lib/react-router-dom.js"
 import { contactService } from "../services/contact.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
-import { loadContacts, removeContact, saveContact } from "../store/actions/contact.actions.js"
+import { loadContacts, removeContact, saveContact, setFilterBy } from "../store/actions/contact.actions.js"
+
 
 const { useState, useEffect } = React
 const { useSelector } = ReactRedux
@@ -12,13 +14,18 @@ const { useNavigate } = ReactRouter
 export function ContactIndex() {
     const navigate = useNavigate()
     const contacts = useSelector(storeState => storeState.contactModule.contacts)
+    const filterBy = useSelector(storeState => storeState.contactModule.filterBy)
 
     useEffect(() => {
         loadContacts()
             .catch(err => {
                 showErrorMsg('Cannot load Contacts!')
             })
-    }, [])
+    }, [filterBy])
+
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
+    }
 
     function onAddContact() {
         navigate('/edit')
@@ -40,8 +47,10 @@ export function ContactIndex() {
             <h3>Contacts list</h3>
             <main>
                 <button className="fa-solid fa-phone" onClick={onAddContact}> Add Contact </button>
+                <ContactFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+
                 <ContactList contacts={contacts} onRemoveContact={onRemoveContact} />
-                <img className="loading-img" src="assets/img/Loading_icon.gif" alt="" />
+                {/* <img className="loading-img" src="assets/img/Loading_icon.gif" alt="" /> */}
             </main>
         </main>
     )

@@ -2,7 +2,9 @@ import { storageService } from "./async-storage.service.js";
 import { userService } from "./user.service.js";
 import { utilService } from "./util.service.js";
 
+const PAGE_SIZE = 5
 const STORAGE_KEY = 'contactDB'
+
 _createContacts()
 
 export const contactService = {
@@ -10,7 +12,8 @@ export const contactService = {
     getById,
     save,
     remove,
-    getEmptyContact
+    getEmptyContact,
+    getDefaultFilter
 }
 
 function getEmptyContact() {
@@ -20,9 +23,22 @@ function getEmptyContact() {
     }
 }
 
-function query() {
+function query(filterBy = { txt: '', isDone: 'all', pageIdx: 0}) {
     return storageService.query(STORAGE_KEY)
+    .then(contacts => {
+        if (filterBy.txt) {
+            const regex = new RegExp(filterBy.txt, 'i')
+            contacts = contacts.filter(contact => regex.test(contact.title))
+        }
+      
+        if (filterBy.pageIdx !== undefined) {
+            const startIdx = filterBy.pageIdx * PAGE_SIZE
+            contacts = contacts.slice(startIdx, PAGE_SIZE + startIdx)
+        }
+        return contacts
+    })
 }
+
 function getById(contactId) {
     return storageService.get(STORAGE_KEY, contactId)
 }
@@ -66,5 +82,9 @@ function _createContacts() {
         ]
         utilService.saveToStorage(STORAGE_KEY, contacts)
     }
+}
+
+function getDefaultFilter() {
+    return { txt: '', isDone: 'all', pageIdx: 0}
 }
 

@@ -1,13 +1,13 @@
 
 import { contactService } from "../../services/contact.service.js"
-import { ADD_CONTACT, EDIT_CONTACT, REMOVE_CONTACT, SET_CONTACTS } from "../reducers/contact.reducer.js"
+import { ADD_CONTACT, EDIT_CONTACT, REMOVE_CONTACT, SET_CONTACTS, SET_FILTER_BY } from "../reducers/contact.reducer.js"
 import { store } from "../store.js"
 
 
 export function loadContacts() {
-    // const filterBy = store.getState().todoModule.filterBy
+    const filterBy = store.getState().contactModule.filterBy
     // store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    return contactService.query().then(contacts => {
+    return contactService.query(filterBy).then(contacts => {
         store.dispatch({ type: SET_CONTACTS, contacts })
     })
         .catch(err => {
@@ -41,4 +41,8 @@ export function removeContact(contactId) {
             console.log('Error from onRemoveContact action ->', err)
             throw err
         })
+}
+
+export function setFilterBy(filterBy) {
+    store.dispatch({ type: SET_FILTER_BY, filterBy })
 }
