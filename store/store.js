@@ -1,20 +1,16 @@
-const { createStore, compose } = Redux
 
+import { userService } from "../services/user.service.js"
+import { contactReducer } from "./reducers/contact.reducer.js"
 
-const initialState = {
-    contacts: []
-}
+const { createStore, compose, combineReducers } = Redux
 
+const rootReducer = combineReducers({
+    contactModule: contactReducer,
+    // userModule: userReducer
+})
 
-export function appReducer(state = initialState, action = {}) {
+const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose
 
-    switch (action.type) {
-        default:
-            return state
-    }
-}
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-export const store = createStore(appReducer, composeEnhancers())
+export const store = createStore(rootReducer, composeEnhancers())
 
 window.gStore = store
