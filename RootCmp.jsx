@@ -6,6 +6,7 @@ import { AppFooter } from './cmp/AppFooter.jsx'
 import { AppHeader } from './cmp/AppHeader.jsx'
 import { store } from './store/store.js'
 import { ContactDetails } from './view/ContactDetails.jsx'
+import { ContactIndex } from './view/ContactIndex.jsx'
 
 export function App() {
     return (
@@ -15,7 +16,8 @@ export function App() {
                     <AppHeader />
                     <main>
                         <Routes>
-                            <Route element={<ContactDetails />} path="/contact/:contactID" />
+                            <Route path="/contact" element={<ContactIndex />} />
+                            <Route element={<ContactDetails />} path="/contact/:contactId" />
                         </Routes>
                     </main>
                     <AppFooter />
