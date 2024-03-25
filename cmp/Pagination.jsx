@@ -1,8 +1,8 @@
-const { useState, useEffect, useRef } = React
-
 import { utilService } from "../services/util.service.js"
 
-export function ContactFilter({ filterBy, onSetFilter }) {
+const { useState, useEffect, useRef } = React
+
+export function Pagination({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     onSetFilter = useRef(utilService.debounce(onSetFilter, 500))
@@ -18,16 +18,15 @@ export function ContactFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    return (
-        <form >
-            <input type="text"
-                id="title"
-                name="txt"
-                placeholder="Search by Contact name..."
-                value={filterByToEdit.txt}
-                onChange={handleChange}
-                className="search-input"
-            />
-        </form>
-    )
+    return <form action="">
+        <label htmlFor="pageIdx">Page:</label>
+        <input type="number"
+            id="pageIdx"
+            name="pageIdx"
+            placeholder="0"
+            value={filterBy.pageIdx}
+            onChange={handleChange}
+            className="page-input"
+        />
+    </form>
 }

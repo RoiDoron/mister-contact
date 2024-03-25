@@ -3,6 +3,18 @@ body {
     margin: auto;
 }
 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: .5em 0 .5em;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+
 header {
     background-color: lightskyblue;
     padding: 10px;
@@ -67,6 +79,7 @@ nav a:hover {
     display: flex;
     flex-wrap: wrap;
     place-content: center;
+    padding: 0;
 }
 
 .bug-preview {
@@ -76,6 +89,7 @@ nav a:hover {
     margin: 5px;
     text-align: center;
     padding: 5px;
+    max-width: 9em;
 }
 
 .bug-preview:hover {
@@ -99,3 +113,29 @@ nav a:hover {
 .nav-bar {
     line-height: 3.5em;
 }
+
+.main-layout {
+    text-align: center;
+}
+
+.add-btn{
+    padding: 9px;
+    border-radius: 1em;
+    border: none;
+    background-color: lightblue;
+    margin-bottom: 1em;
+}
+
+.search-input{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    border-radius: 3em;
+    border: none;
+    background-color: lightblue;
+}
+
+.search-input:focus{
+   outline: none;
+}
+

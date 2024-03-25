@@ -1,5 +1,6 @@
 import { ContactFilter } from "../cmp/ContactFilter.jsx"
 import { ContactList } from "../cmp/ContactList.jsx"
+import { Pagination } from "../cmp/pagination.jsx"
 import { Navigate } from "../lib/react-router-dom.js"
 import { contactService } from "../services/contact.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
@@ -46,11 +47,12 @@ export function ContactIndex() {
         <main>
             <h3>Contacts list</h3>
             <main>
-                <button className="fa-solid fa-phone" onClick={onAddContact}> Add Contact </button>
+                <button className="add-btn fa-solid fa-phone" onClick={onAddContact}> Add Contact </button>
                 <ContactFilter filterBy={filterBy} onSetFilter={onSetFilter} />
 
                 <ContactList contacts={contacts} onRemoveContact={onRemoveContact} />
                 {/* <img className="loading-img" src="assets/img/Loading_icon.gif" alt="" /> */}
+                <Pagination filterBy={filterBy} onSetFilter={onSetFilter}/>
             </main>
         </main>
     )
