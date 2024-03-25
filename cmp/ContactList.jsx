@@ -1,5 +1,7 @@
 const { Link } = ReactRouterDOM
 import { ContactPreview } from './ContactPreview.jsx'
+import { ContactEdit } from "./ContactEdit.jsx"
+
 
 export function ContactList({contacts}){
 
@@ -10,10 +12,10 @@ export function ContactList({contacts}){
             {contacts.map((contact) => (
                 <li className="bug-preview" key={contact._id}>
                     <ContactPreview contact={contact} />
-                    {/* <div>
-                        <button onClick={() => onRemoveTodo(todo._id)}>x</button>
-                        <button onClick={() => onEditTodo(todo)}>Edit</button>
-                    </div> */}
+                    <div>
+                        {/* <button onClick={() => onRemoveTodo(todo._id)}>x</button> */}
+                        {/* <Link to={`/contact/${contact._id}`}><button onClick={() => onEditContact(contact)}>Edit contact</button></Link> */}
+                    </div>
                     <Link to={`/contact/${contact._id}`}>Details</Link>
                 </li>
             ))
