@@ -4,10 +4,12 @@ const { Provider } = ReactRedux
 
 import { AppFooter } from './cmp/AppFooter.jsx'
 import { AppHeader } from './cmp/AppHeader.jsx'
+import { UserMsg } from './cmp/UserMsg.jsx'
 import { store } from './store/store.js'
 import { ContactDetails } from './view/ContactDetails.jsx'
 import { ContactEdit } from './view/ContactEdit.jsx'
 import { ContactIndex } from './view/ContactIndex.jsx'
+
 
 export function App() {
     return (
@@ -26,6 +28,7 @@ export function App() {
                     <AppFooter />
                 </div>
             </Router>
+            <UserMsg />
         </Provider>
     )
 }

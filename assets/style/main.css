@@ -66,6 +66,7 @@ nav a:hover {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    place-content: center;
 }
 
 .bug-preview {
@@ -77,10 +78,24 @@ nav a:hover {
     padding: 5px;
 }
 
+.bug-preview:hover {
+    animation: pulse;
+    animation-duration: 1s;
+}
+
 .bug-preview a {
     color: lightskyblue;
 }
 
 .bug-preview span {
     color: gold;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-bar {
+    line-height: 3.5em;
 }

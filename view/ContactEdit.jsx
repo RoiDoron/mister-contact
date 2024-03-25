@@ -1,12 +1,15 @@
 const { useState, useEffect } = React
 
 const { Link, useParams } = ReactRouterDOM
+const { useNavigate } = ReactRouter
 
 import { contactService } from "../services/contact.service.js"
+import { showSuccessMsg } from "../services/event-bus.service.js"
 import { saveContact } from "../store/actions/contact.actions.js"
 
 export function ContactEdit() {
     const { contactId } = useParams()
+    const navigate = useNavigate()
     
     const [editContact, setEditContact] = useState(contactService.getEmptyContact())
 
@@ -31,6 +34,8 @@ export function ContactEdit() {
         ev.preventDefault()
         console.log('hi');
         saveContact(editContact)
+        navigate('/contact')
+        showSuccessMsg('We did it!')
     }
 
     return <form onSubmit={submit}>
