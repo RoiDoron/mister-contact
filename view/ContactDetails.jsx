@@ -23,8 +23,7 @@ export function ContactDetails() {
     return contact && <div>
         <h3>Contact details 🐛</h3>
         <h4>{contact.title}</h4>
-        <p>Severity: <span>{contact.severity}</span></p>
-        <p>description: <span>{contact.description}</span></p>
+        <p>Number: <span>{contact.number}</span></p>
         <Link to="/contact">Back to List</Link>
     </div>
 }
