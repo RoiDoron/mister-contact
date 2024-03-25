@@ -2,7 +2,7 @@ const { Link } = ReactRouterDOM
 import { ContactPreview } from './ContactPreview.jsx'
 
 
-export function ContactList({contacts, onRemoveContact}){
+export function ContactList({ contacts, onRemoveContact }) {
 
     if (!contacts) return <div>Loading...</div>
 
@@ -10,15 +10,17 @@ export function ContactList({contacts, onRemoveContact}){
         <ul className="bug-list animate__animated animate__backInLeft">
             {contacts.map((contact) => (
                 <li className="bug-preview" key={contact._id}>
+                    <button className='x-btn fa-solid fa-trash' onClick={() => onRemoveContact(contact._id)}></button>
                     <ContactPreview contact={contact} />
-                    <div>
-                        <button onClick={() => onRemoveContact(contact._id)}>x</button>
-                        <Link to={`/edit/${contact._id}`}><button>Edit contact</button></Link>
+                    <div className='link-container'>
+                    <Link to={`/edit/${contact._id}`}><button>Edit contact</button></Link>
+                    <Link to={`/contact/${contact._id}`}><button>Details</button></Link>
                     </div>
-                    <Link to={`/contact/${contact._id}`}>Details</Link>
                 </li>
             ))
             }
         </ul >
     )
 }
+
+
