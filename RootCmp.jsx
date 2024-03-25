@@ -5,12 +5,13 @@ const { Provider } = ReactRedux
 
 import { AppFooter } from './cmp/AppFooter.jsx'
 import { AppHeader } from './cmp/AppHeader.jsx'
+import { store } from './store/store.js'
 import { ContactDetails } from './view/ContactDetails.jsx'
 
 
 export function App() {
     return (
-        <Provider>
+        <Provider store={store}>
             <Router>
                 <div>
                     <AppHeader />
@@ -21,7 +22,7 @@ export function App() {
                     </main>
                     <AppFooter />
                 </div>
-            // </Router>
-        // </Provider>
+            </Router>
+        </Provider>
     )
 }
